@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20160204213852_add_admin_col_to_users.rb
