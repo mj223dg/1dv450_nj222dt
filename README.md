@@ -3,6 +3,7 @@
 <h4>if Cloud9:</h4>
 ```bash
 1: git clone https://github.com/nj222dt/1dv450_nj222dt.git
+Note: cd Api_regi
 2: bundle install
 3: rake db:setup 
 4: rails server -b $IP -p $PORT
@@ -10,6 +11,7 @@
 <h4>else</h4>
 ```bash
 1: git clone https://github.com/nj222dt/1dv450_nj222dt.git
+Note: cd Api_regi
 2: bundle install
 3: rake db:setup 
 4: rails s
