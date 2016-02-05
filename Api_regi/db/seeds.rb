@@ -6,18 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(name: "Admin Svensson", email:"admin@admin.com", password: "adminpassword",
+User.create(name: "Admin User", email:"admin@admin.com", password: "adminpassword",
             password_confirmation: "adminpassword", admin: true)
-@testuser = User.create(name: "Test User", email:"testuser@example.com", password: "testuserpassword",
-            password_confirmation: "testuserpassword")
+@test = User.create(name: "Test-User1", email:"User1@example.com", password: "user1password",
+            password_confirmation: "user1password")
 
-@testuser2 = User.create(name: "Test Usah!!", email: "testuser2@example.com", password: "testuser2password",
-                         password_confirmation: "testuser2password")
+@test2 = User.create(name: "Test-User2", email: "User2@example.com", password: "user2password",
+                         password_confirmation: "user2password")
 
 
 
-@testuser.api.create(name: "TestApp", api_key: "justATestApiKeyOne")
-@testuser.api.create(name: "TestApp2", api_key: "justATestApiKeyTwoLol")
+@test.api.create(name: "Apikeytest1", api_key: "12313123124414214")
+@test.api.create(name: "Apikeytest2", api_key: "asdd121d121d21d2d12")
 
-@testuser2.api.create(name: "Twittah!", api_key: "thwittahLOLOLOLOLOL")
-@testuser2.api.create(name: "Faceboookah", api_key: "facebokahYOYOYO")
+@test2.api.create(name: "Apikeytest3", api_key: "12d12d1231d1d1d")
+@test2.api.create(name: "Apikeytest4", api_key: "12d1d12d1d12d21d")

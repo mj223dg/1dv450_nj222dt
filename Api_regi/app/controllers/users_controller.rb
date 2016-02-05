@@ -10,13 +10,13 @@ class UsersController < ApplicationController
     def show
         if logged_in?
             @user = fetch_user
+            if @user.admin?
+            @apis = Api.all
+            else
+            @apis = @user.api
+            end
         else
             redirect_to root_path
-        end
-        if @user.admin?
-            @apis = Api.all
-        else
-            @apis = @user.api
         end
     end
     
