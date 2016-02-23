@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     def new
         @user = User.new
     end
-    
+   
     def show
         if logged_in?
             @user = fetch_user
@@ -37,6 +37,6 @@ class UsersController < ApplicationController
         params.require(:user).permit(:name, :email, :password,:password_confirmation)
     end
     def fetch_user
-      @user = User.find(params[:id])
+      @user = User.find(session[:user_id])
     end
 end
