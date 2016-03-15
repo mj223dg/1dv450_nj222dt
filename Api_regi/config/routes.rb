@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-    namespace :api, defaults: {format: "json"} do
+  namespace :api, defaults: {format: "json"} do
     namespace :v1 do
-      resources :positions, only: [:index, :create, :show, :update, :destroy]
+      resources :positions
       resources :tags
-      get "tag/specific" => "tags#show_specific_event"
+      resources :event
     end
   end
   root  'home#index'
