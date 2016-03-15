@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
-  belongs_to :positions
-  belongs_to :creators
+  has_and_belongs_to_many :tags
+  belongs_to :position
+  belongs_to :creator
 end
