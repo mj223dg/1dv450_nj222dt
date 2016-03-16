@@ -1,7 +1,7 @@
 class CreateCreators < ActiveRecord::Migration
   def change
     create_table :creators do |t|
-      t.integer :creator_id
+      t.string :email
 
       t.timestamps null: false
     end

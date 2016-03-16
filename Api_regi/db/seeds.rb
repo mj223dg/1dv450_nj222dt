@@ -21,3 +21,31 @@ User.create(name: "Admin User", email:"admin@admin.com", password: "adminpasswor
 
 @test2.api.create(name: "Apikeytest3", api_key: "12d12d1231d1d1d")
 @test2.api.create(name: "Apikeytest4", api_key: "12d1d12d1d12d21d")
+
+@school = School.create(name: "Lars kagg", description: "asdasdasdasd")
+@school2 = School.create(name: "Stagg", description: "wewewewewewewe")
+@school3 = School.create(name: "Cis", description: "wewewewewewewe")
+@school4 = School.create(name: "Linne", description: "wewewewewewewe")
+
+@creator1 = Creator.create(email: "User1@example.com")
+@creator2 = Creator.create(email: "User2@example.com")
+
+@school.creator = @creator1
+@school2.creator = @creator2
+@school3.creator = @creator1
+@school4.creator = @creator2
+
+@school.position = Position.create(location_name: "Lars Kagg adress", longitude: "62.2323", latitude: "12.312")
+@school2.position  = Position.create(location_name: "Stagg adress", longitude: "65.2323", latitude: "82.21312")
+@school3.position  = Position.create(location_name: "Cis adress", longitude: "69.2323", latitude: "22.21312")
+@school4.position  = Position.create(location_name: "Linne adress", longitude: "42.2323", latitude: "12.21312")
+
+
+@tag = Tag.create(name: "Bra skola")
+@tag2 = Tag.create(name: "Dålig skola")
+@tag3 = Tag.create(name: "Ok skola")
+
+@school.tags << @tag
+@school2.tags << @tag2
+@school3.tags << @tag3
+@school4.tags << @tag3

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   namespace :api, defaults: {format: "json"} do
     namespace :v1 do
-      resources :positions
-      resources :tags
-      resources :event
+      resources :schools, only: [:show, :create, :update, :destroy, :index] do
+        resources :positions, only: [:index, :show]
+        resources :tags, only: [:index, :show]
+        resources :events, only: [:index, :show]
+        resources :creators, only: [:index, :show]
+      end
     end
   end
   root  'home#index'
