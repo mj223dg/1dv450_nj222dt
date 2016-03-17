@@ -13,6 +13,11 @@ User.create(name: "Admin User", email:"admin@admin.com", password: "adminpasswor
 
 @test2 = User.create(name: "Test-User2", email: "User2@example.com", password: "user2password",
                          password_confirmation: "user2password")
+                         
+@test3 = User.create(name: "Test-User3", email: "User3@example.com", password: "user3password",
+                         password_confirmation: "user3password")
+@test4 = User.create(name: "Test-User4", email: "User4@example.com", password: "user4password",
+                         password_confirmation: "user4password")
 
 
 
