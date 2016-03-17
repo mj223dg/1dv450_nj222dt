@@ -2,7 +2,8 @@ class PositionSerializer < ActiveModel::Serializer
   attributes :id, :address, :longitude, :latitude, :links
   def links
     {
-      schools: api_v1_position_schools_path(object.id),
+      self: api_v1_position_path(object.id),
+      schools: api_v1_school_path(object.schools.id),
     }
   end
 end
