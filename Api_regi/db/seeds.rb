@@ -27,18 +27,18 @@ User.create(name: "Admin User", email:"admin@admin.com", password: "adminpasswor
 @school3 = School.create(name: "Cis", description: "wewewewewewewe")
 @school4 = School.create(name: "Linne", description: "wewewewewewewe")
 
-@creator1 = Creator.create(email: "User1@example.com")
-@creator2 = Creator.create(email: "User2@example.com")
+# @creator1 = Creator.create(email: "User1@example.com")
+# @creator2 = Creator.create(email: "User2@example.com")
 
-@school.creator = @creator1
-@school2.creator = @creator2
-@school3.creator = @creator1
-@school4.creator = @creator2
+# @school.creator = @creator1
+# @school2.creator = @creator2
+# @school3.creator = @creator1
+# @school4.creator = @creator2
 
-@school.position = Position.create(location_name: "Lars Kagg adress", longitude: "62.2323", latitude: "12.312")
-@school2.position  = Position.create(location_name: "Stagg adress", longitude: "65.2323", latitude: "82.21312")
-@school3.position  = Position.create(location_name: "Cis adress", longitude: "69.2323", latitude: "22.21312")
-@school4.position  = Position.create(location_name: "Linne adress", longitude: "42.2323", latitude: "12.21312")
+@school.position = Position.create(address: "Långviksvägen 23, Kalmar")
+@school2.position  = Position.create(address: "Skräddaretorpsvägen 10, Kalmar")
+@school3.position  = Position.create(address: "Södra Långgatan 6, Kalmar")
+@school4.position  = Position.create(address: "Skräddaretorpsvägen 6, Kalmar")
 
 
 @tag = Tag.create(name: "Bra skola")

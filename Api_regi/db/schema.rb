@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20160316191518) do
   add_index "events", ["positions_id"], name: "index_events_on_positions_id"
 
   create_table "positions", force: :cascade do |t|
-    t.string   "location_name", limit: 30
+    t.string   "address"
     t.float    "longitude"
     t.float    "latitude"
   end

@@ -1,7 +1,7 @@
 class CreatePositions < ActiveRecord::Migration
   def change
     create_table :positions do |t|
-      t.string :location_name, :limit => 30
+      t.string :address
       t.float :longitude
       t.float :latitude
 
