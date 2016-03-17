@@ -11,4 +11,13 @@ class Api::V1::SchoolsController < Api::V1::BaseController
     school = School.find(params[:id])
     respond_with school, status: :ok
   end
+  
+  def create
+  end
+  
+  def destroy
+  end
+  
+  def update
+  end
 end

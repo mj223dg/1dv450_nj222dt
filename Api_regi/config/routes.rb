@@ -6,6 +6,19 @@ Rails.application.routes.draw do
         resources :tags, only: [:index, :show]
         resources :creators, only: [:index, :show]
       end
+      
+      resources :positions, only: [:show, :create, :update, :destroy, :index] do
+        resources :schools, only: [:index, :show]
+      end
+      
+      resources :tags, only: [:show, :create, :update, :destroy, :index] do
+        resources :schools, only: [:index, :show]
+      end
+      
+      resources :creators, only: [:show, :create, :update, :destroy, :index] do
+        resources :schools,only: [:index, :show]
+      end
+      
     end
   end
   root  'home#index'
