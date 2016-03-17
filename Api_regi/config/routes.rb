@@ -4,7 +4,6 @@ Rails.application.routes.draw do
       resources :schools, only: [:show, :create, :update, :destroy, :index] do
         resources :positions, only: [:index, :show]
         resources :tags, only: [:index, :show]
-        resources :events, only: [:index, :show]
         resources :creators, only: [:index, :show]
       end
     end

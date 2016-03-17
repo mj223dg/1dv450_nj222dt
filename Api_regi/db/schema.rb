@@ -26,15 +26,6 @@ ActiveRecord::Schema.define(version: 20160316191518) do
     t.string   "password_digest"
   end
 
-  create_table "events", force: :cascade do |t|
-    t.integer  "positions_id"
-    t.integer  "creators_id"
-    t.string   "name"
-  end
-
-  add_index "events", ["creators_id"], name: "index_events_on_creators_id"
-  add_index "events", ["positions_id"], name: "index_events_on_positions_id"
-
   create_table "positions", force: :cascade do |t|
     t.string   "address"
     t.float    "longitude"
@@ -44,6 +35,10 @@ ActiveRecord::Schema.define(version: 20160316191518) do
   create_table "schools", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
+    t.integer  "positions_id"
+    t.integer  "creators_id"
+    t.integer  "creator_id"
+    t.integer  "position_id"
   end
 
   create_table "schools_tags", force: :cascade do |t|

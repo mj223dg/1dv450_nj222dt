@@ -27,25 +27,30 @@ User.create(name: "Admin User", email:"admin@admin.com", password: "adminpasswor
 @school3 = School.create(name: "Cis", description: "wewewewewewewe")
 @school4 = School.create(name: "Linne", description: "wewewewewewewe")
 
-# @creator1 = Creator.create(email: "User1@example.com")
-# @creator2 = Creator.create(email: "User2@example.com")
+@creator1 = Creator.create(email: "User1@example.com",password: "user1password",
+                         password_confirmation: "user1password")
+@creator2 = Creator.create(email: "User2@example.com",password: "user2password",
+                         password_confirmation: "user2password")
 
-# @school.creator = @creator1
-# @school2.creator = @creator2
-# @school3.creator = @creator1
-# @school4.creator = @creator2
+@school.creator = @creator1
+@school2.creator = @creator2
+@school3.creator = @creator1
+@school4.creator = @creator2
 
 @school.position = Position.create(address: "Långviksvägen 23, Kalmar")
 @school2.position  = Position.create(address: "Skräddaretorpsvägen 10, Kalmar")
 @school3.position  = Position.create(address: "Södra Långgatan 6, Kalmar")
 @school4.position  = Position.create(address: "Skräddaretorpsvägen 6, Kalmar")
 
-
 @tag = Tag.create(name: "Bra skola")
 @tag2 = Tag.create(name: "Dålig skola")
 @tag3 = Tag.create(name: "Ok skola")
 
 @school.tags << @tag
+@school.tags << @tag3
+
 @school2.tags << @tag2
+@school2.tags << @tag3
+
 @school3.tags << @tag3
 @school4.tags << @tag3
