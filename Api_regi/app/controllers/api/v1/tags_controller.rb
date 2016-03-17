@@ -13,10 +13,33 @@ class Api::V1::TagsController < Api::V1::BaseController
   def show
     respond_with Tag.find_by_id(params[:id])
   end
+  def create
+    if params[:school_id].blank?
+      render json: { error: "Need a school" } and return 
+    end
+    
+    school = School.find_by_id(params[:school_id])
+    render json: { error: "School don't exist" } and return unless school.present?
 
+    School = School.find_by_id(params[:school_id])
+    
+    begin
+      tag = Tag.new(tag_params)
+
+      if tag.save
+        school.tags << tag
+        render json: tag, status: 201
+      else
+        render json: { errors: "there is a issue with the tags" }, status: 402
+      end
+    rescue JSON::ParserError => e
+      render json: { developer_error: "Could not parse json", user_error: "Something went wrong" }, status: :bad_request
+    end
+  end
   private
     def tag_params
-
+      json_params = ActionController::Parameters.new(JSON.parse(request.body.read))
+      json_params.require(:tag).permit(:name)
     end
 
 end

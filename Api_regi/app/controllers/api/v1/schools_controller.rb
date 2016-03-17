@@ -12,22 +12,28 @@ class Api::V1::SchoolsController < Api::V1::BaseController
   end
   
   def create
-    school = School.new(school_params.except(:tags,:position))
-    school.creator = current_user
-    school.position = Position.create(school_params[:position])
-    
-    if tags = school_params[:tags]
-      tags.each do |tag|
-        school.tags << Tag.where(tag).first_or_create
+    begin
+      school = School.new(school_params.except(:tags,:position))
+      school.creator = current_user
+      school.position = Position.create(school_params[:position])
+      
+      if tags = school_params[:tags]
+        tags.each do |tag|
+          school.tags << Tag.where(tag).first_or_create
+        end
       end
+      
+      if school.save
+        render json: school, status: 201
+      else
+        render json: { errors: "something went wrong" }, status: 402
+      end
+    rescue JSON::ParserError => e
+      render json: {
+        developer_error: "Could not parse json",
+        user_error: "Something went wrong"
+      }, status: :bad_request
     end
-    
-    if school.save
-      render json: school, status: 201
-    else
-      render json: { errors: "something went wrong" }, status: 402
-    end
-    
   end
   
   def destroy
