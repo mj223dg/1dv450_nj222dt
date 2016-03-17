@@ -1,4 +1,5 @@
 class TagSerializer < ActiveModel::Serializer
+  include Rails.application.routes.url_helpers
   attributes :id, :name, :links
   def links
     {

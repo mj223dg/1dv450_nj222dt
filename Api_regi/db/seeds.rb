@@ -42,10 +42,10 @@ User.create(name: "Admin User", email:"admin@admin.com", password: "adminpasswor
 @school3.creator = @creator1
 @school4.creator = @creator2
 
-@school.position = Position.create(address: "Långviksvägen 23, Kalmar")
-@school2.position  = Position.create(address: "Skräddaretorpsvägen 10, Kalmar")
+@school4.position = Position.create(address: "Långviksvägen 23, Kalmar")
+@school.position  = Position.create(address: "Skräddaretorpsvägen 10, Kalmar")
 @school3.position  = Position.create(address: "Södra Långgatan 6, Kalmar")
-@school4.position  = Position.create(address: "Skräddaretorpsvägen 6, Kalmar")
+@school2.position  = Position.create(address: "Skräddaretorpsvägen 6, Kalmar")
 
 @tag = Tag.create(name: "Bra skola")
 @tag2 = Tag.create(name: "Dålig skola")
@@ -59,3 +59,9 @@ User.create(name: "Admin User", email:"admin@admin.com", password: "adminpasswor
 
 @school3.tags << @tag3
 @school4.tags << @tag3
+
+@school.save
+@school2.save
+@school3.save
+@school4.save
+

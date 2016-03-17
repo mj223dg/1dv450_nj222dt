@@ -3,10 +3,8 @@ class CreateSchools < ActiveRecord::Migration
     create_table :schools do |t|
       t.string :name
       t.text :description
-      t.references :positions
-      t.references :creators
-      t.integer :creator_id
-      t.integer :position_id
+      t.references :position, index: true
+      t.references :creator, index: true
       
       t.timestamps null: false
     end

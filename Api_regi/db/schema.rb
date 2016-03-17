@@ -17,12 +17,16 @@ ActiveRecord::Schema.define(version: 20160316191518) do
     t.string   "name",       limit: 25
     t.string   "api_key"
     t.integer  "user_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   add_index "apis", ["user_id"], name: "index_apis_on_user_id"
 
   create_table "creators", force: :cascade do |t|
     t.string   "email"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "password_digest"
   end
 
@@ -30,16 +34,21 @@ ActiveRecord::Schema.define(version: 20160316191518) do
     t.string   "address"
     t.float    "longitude"
     t.float    "latitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "schools", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "positions_id"
-    t.integer  "creators_id"
-    t.integer  "creator_id"
     t.integer  "position_id"
+    t.integer  "creator_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
+  add_index "schools", ["creator_id"], name: "index_schools_on_creator_id"
+  add_index "schools", ["position_id"], name: "index_schools_on_position_id"
 
   create_table "schools_tags", force: :cascade do |t|
     t.integer "school_id"
@@ -51,12 +60,16 @@ ActiveRecord::Schema.define(version: 20160316191518) do
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       limit: 30
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.boolean  "admin",           default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_digest"
     t.string   "remember_digest"
   end

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       end
       
       resources :creators, only: [:show, :create, :update, :destroy, :index] do
-        resources :schools,only: [:index, :show]
+        resources :schools, only: [:index, :show]
       end
       
     end
