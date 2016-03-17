@@ -1,5 +1,5 @@
 class Api::V1::TagsController < Api::V1::BaseController
-  skip_before_action :authenticate, only: [:index, :show]
+  skip_before_action :authenticate
 
   def index
     if (params[:school_id])

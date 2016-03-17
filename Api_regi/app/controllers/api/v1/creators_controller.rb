@@ -1,7 +1,7 @@
 class Api::V1::CreatorsController < Api::V1::BaseController
-  skip_before_action :authenticate, only: [:index, :show]
+  skip_before_action :authenticate
   def index
-    respond_with Creator.all
+    respond_with Creator.limit(@limit).offset(@offset)
   end
 
   def show

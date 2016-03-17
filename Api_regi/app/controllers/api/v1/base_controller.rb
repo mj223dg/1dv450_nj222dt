@@ -4,6 +4,10 @@ class Api::V1::BaseController < ApplicationController
     before_action :authenticate
     before_action :restrict_access
     respond_to :json
+    
+    OFFSET = 0
+    LIMIT = 2
+    
     def restrict_access
       api_key = request.headers['Api-Key']
       @api = Api.where(api_key: api_key).first if api_key
@@ -11,4 +15,15 @@ class Api::V1::BaseController < ApplicationController
         render json: { errors: { developer_error: "The API-key is invalid or outdated", user_error: "Something went wrong" } }, status: :unauthorized
       end
     end
+    
+    def offset_params
+      if params[:offset].present?
+        @offset = params[:offset].to_i
+      end
+      if params[:limit].present?
+        @limit = params[:limit].to_i
+      end
+      @offset ||= OFFSET
+      @limit  ||= LIMIT
+  end
 end

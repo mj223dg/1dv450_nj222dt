@@ -3,7 +3,7 @@ class Api::V1::SchoolsController < Api::V1::BaseController
   respond_to :json
 
   def index
-    respond_with School.all
+    respond_with School.limit(@limit).offset(@offset)
   end
   
   def show
