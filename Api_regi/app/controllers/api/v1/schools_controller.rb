@@ -28,11 +28,11 @@ class Api::V1::SchoolsController < Api::V1::BaseController
       else
         render json: { errors: "something went wrong" }, status: 402
       end
-    rescue JSON::ParserError => e
-      render json: {
-        developer_error: "Could not parse json",
-        user_error: "Something went wrong"
-      }, status: :bad_request
+      rescue JSON::ParserError => e
+        render json: {
+          developer_error: "Could not parse json",
+          user_error: "Something went wrong"
+        }, status: :bad_request
     end
   end
   
