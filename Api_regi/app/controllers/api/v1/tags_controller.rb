@@ -20,8 +20,6 @@ class Api::V1::TagsController < Api::V1::BaseController
     
     school = School.find_by_id(params[:school_id])
     render json: { error: "School don't exist" } and return unless school.present?
-
-    School = School.find_by_id(params[:school_id])
     
     begin
       tag = Tag.new(tag_params)

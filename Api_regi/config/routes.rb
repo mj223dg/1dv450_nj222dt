@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: "json"} do
     namespace :v1 do
       resources :schools, only: [:show, :create, :update, :destroy, :index] do
-        resources :positions, only: [:index, :show]
-        resources :tags, only: [:index, :show]
-        resources :creators, only: [:index, :show]
+        resources :tags, only: [:index, :create]
       end
       
       resources :positions, only: [:show, :create, :update, :destroy, :index] do
