@@ -4,22 +4,36 @@ class Api::V1::TagsController < Api::V1::BaseController
   def index
     if params[:school_id]
       school = School.find_by_id(params[:school_id])
-      respond_with school.tags
+      if school.present?
+        respond_with school.tags
+      else
+        render json: { error: "There is no school that is connected to that id"}, status: :not_found and return
+      end
     else
       respond_with Tag.all
     end
   end
 
   def show
-    respond_with Tag.find_by_id(params[:id])
+    if params[:id]
+      tag = Tag.find_by_id(params[:id])
+      if tag.present?
+        respond_with tag
+      else
+        render json: { error: "There is no tag that is connected to that id"}, status: :not_found and return
+      end
+    else
+      render json: { error: "There id parameter don't seem to be valid, so nothing is found"}, status: :not_found and return
+    end
   end
+  
   def create
     if params[:school_id].blank?
-      render json: { error: "Need a school" } and return 
+      render json: { error: "Need a school id parameter to attach the tag to" }, status: :not_found and return 
     end
     
     school = School.find_by_id(params[:school_id])
-    render json: { error: "School don't exist" } and return unless school.present?
+    render json: { error: "There is no school that is connected to that id" },status: :not_found and return unless school.present?
     
     begin
       tag = Tag.new(tag_params)
@@ -28,7 +42,7 @@ class Api::V1::TagsController < Api::V1::BaseController
         school.tags << tag
         render json: tag, status: 201
       else
-        render json: { errors: "there is a issue with the tags" }, status: 402
+        render json: { errors: "There is a issue with saving the tag" }, status: 409 and return
       end
     end
   end
