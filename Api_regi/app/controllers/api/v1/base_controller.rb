@@ -6,7 +6,7 @@ class Api::V1::BaseController < ApplicationController
     respond_to :json
     
     OFFSET = 0
-    LIMIT = 2
+    LIMIT = 10
     
     def restrict_access
       api_key = request.headers['Api-Key']
@@ -25,5 +25,5 @@ class Api::V1::BaseController < ApplicationController
       end
       @offset ||= OFFSET
       @limit  ||= LIMIT
-  end
+    end
 end

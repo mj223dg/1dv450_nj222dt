@@ -7,15 +7,14 @@ Rails.application.routes.draw do
       end
       
       resources :positions, only: [:show, :create, :update, :destroy, :index] do
-        resources :schools, only: [:index, :show]
       end
       
       resources :tags, only: [:show, :create, :update, :destroy, :index] do
-        resources :schools, only: [:index, :show]
+        resources :schools, only: [:index]
       end
       
       resources :creators, only: [:show, :create, :update, :destroy, :index] do
-        resources :schools, only: [:index, :show]
+        resources :schools, only: [:index]
       end
       
     end

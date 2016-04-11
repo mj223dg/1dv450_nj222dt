@@ -2,7 +2,7 @@ class Api::V1::TagsController < Api::V1::BaseController
   skip_before_action :authenticate
 
   def index
-    if (params[:school_id])
+    if params[:school_id]
       school = School.find_by_id(params[:school_id])
       respond_with school.tags
     else
@@ -30,8 +30,6 @@ class Api::V1::TagsController < Api::V1::BaseController
       else
         render json: { errors: "there is a issue with the tags" }, status: 402
       end
-    rescue JSON::ParserError => e
-      render json: { developer_error: "Could not parse json", user_error: "Something went wrong" }, status: :bad_request
     end
   end
   private

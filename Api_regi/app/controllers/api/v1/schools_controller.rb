@@ -3,7 +3,16 @@ class Api::V1::SchoolsController < Api::V1::BaseController
   respond_to :json
 
   def index
-    respond_with School.limit(@limit).offset(@offset)
+    if params[:tag_id]
+      tag = Tag.find_by_id(params[:tag_id])
+      schools = tag.schools.limit(@limit).offset(@offset) if tag.present?
+      elsif params[:creator_id]
+      creator = Creator.find_by_id(params[:creator_id])
+      schools = creator.schools.limit(@limit).offset(@offset) if creator.present?
+    else
+      schools = School.all
+    end
+    respond_with schools
   end
   
   def show
@@ -28,11 +37,6 @@ class Api::V1::SchoolsController < Api::V1::BaseController
       else
         render json: { errors: "something went wrong" }, status: 402
       end
-      rescue JSON::ParserError => e
-        render json: {
-          developer_error: "Could not parse json",
-          user_error: "Something went wrong"
-        }, status: :bad_request
     end
   end
   
