@@ -34,6 +34,7 @@ Note: cd Api_regi
 
 <h3>POSTMAN-FILES</h3>
 [Get the postman files](https://www.getpostman.com/collections/c8b14231ed9673d126f7)
+<br>
 <strong>How to use</strong>
 ```bash
 1: Do the steps above and log in to Api-client
@@ -48,8 +49,9 @@ Note: cd Api_regi
 ```
 <strong>Notes about Postman Files</strong>
 <p>If you are gone use the get files to POST make sure you follow the correct JSON</p>
+
 ```bash
-    To create a School in the Add School Postman-file
+    To create a School in the (Add School) Postman-file
     {
         "schools":{
             "name":"Example Name",
@@ -67,5 +69,14 @@ Note: cd Api_regi
             }
         }
     }
-    Note: Position adress is very case sensitive
+    Note: Position address is very case sensitive
+```
+
+```bash
+    To create a Tag to a school in the (Add Tags by School id) Postman Files
+    {
+        "tag":{
+            "name":"Example Name"
+        }
+    }
 ``` 

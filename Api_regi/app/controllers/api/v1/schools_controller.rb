@@ -87,7 +87,7 @@ class Api::V1::SchoolsController < Api::V1::BaseController
       render json: { errors: "The school you're trying to remove don't exist" }, status: :non_found and return
     end
     school.destroy
-    render json: { action: "destroy", message: "The school was removed" }, status: 200 and return
+    render json: { message: "The school was removed" }, status: 200 and return
   end
   
   def update
@@ -101,11 +101,11 @@ class Api::V1::SchoolsController < Api::V1::BaseController
       render json: { errors: "The school you're trying to update don't exist" }, status: :non_found and return
     end
     begin
-      if school.update(school_params)
+    if school.update(school_params.except(:tags,:position))
         render json: { action: "update", school: SchoolSerializer.new(school) }, status: 200 and return
-      else
-        render json: { errors: "TOTAL HAVOC" }, status: 500 and return
-      end
+    else
+        render json: { errors: "Something went very wrong" }, status: 409 and return
+    end
     end    
   end
   
