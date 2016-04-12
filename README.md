@@ -51,11 +51,124 @@ Note: cd Api_regi
     Api-key : Needs the Api-key you retrived from the Api-Key in step 2:
     
 ```
-<h1>It's IMPORTANT that you keep the current Token that you got from JWT in Authorization Header and
-the Api-key you get from the client-side in Api-key Header</h1>
+<h3>It's IMPORTANT that you keep the current Token that you got from JWT in Authorization Header and
+the Api-key you get from the client-side in Api-key Header</h3>
 <br>
-<strong>Notes about Postman Files</strong>
-<p>If you are gone use the get files to POST make sure you follow the correct JSON</p>
+<h2>Api-documentation</h2>
+
+<h6>POST JWT Knock Token</h6>
+```bash
+    POSTMAN Knock JWT Token Key
+    /knock/auth_token/
+    Header: Content-Type : application/json
+    Body: {"auth": {"email": "example@example.com", "password": "examplepassword"}}
+```
+<h6>POST Create School</h6>
+```bash
+    POSTMAN Add school
+    /api/v1/schools
+    Header: Content-Type  : application/json
+            Api-Key       : Api-Key
+            Authorization : Bearer JWET Token Key
+    Body: 
+    {
+        "schools":{
+            "name":"Example name",
+            "description":"Example Description",
+            "tags":[
+            {
+                "name":"Example name"
+            },
+            {
+                "name":"Example name"
+            }
+            ],
+            "position":{
+                "address":"Långviksvägen 20, Kalmar"
+            }
+        }
+    }
+```
+
+
+
+<h6>GET All Schools</h6>
+```bash
+    POSTMAN All Schools
+    /api/v1/schools
+```
+<h6>GET School By id</h6>
+```bash
+    POSTMAN All Schools by id
+    /api/v1/schools/:id
+    Example: /api/v1/schools/1
+```
+<h6>GET Tags linked to school id</h6>
+```bash
+    POSTMAN All Schools by id Get Tags
+    /api/v1/schools/:id/tags
+    Example: /api/v1/schools/1/tags
+```
+<h6>GET All Positions</h6>
+```bash
+    POSTMAN All Positions
+    /api/v1/positions
+```
+<h6>GET Positions By id</h6>
+```bash
+    POSTMAN All Positions by id
+    /api/v1/positions/:id
+    Example: /api/v1/positions/1
+```
+<h6>GET All Tags</h6>
+```bash
+    POSTMAN All Tags
+    /api/v1/tags
+```
+<h6>GET All Tags by id</h6>
+```bash
+    POSTMAN All Tags by id
+    /api/v1/tags/:id
+    Example: /api/v1/tags/1
+```
+<h6>GET Schools linked to Tag</h6>
+```bash
+    POSTMAN All Tags by id Get Schools
+    /api/v1/tags/:id/schools
+    Example: /api/v1/tags/1/schools
+```
+<h6>GET All Creators</h6>
+```bash
+    POSTMAN All Creators
+    /api/v1/creators
+```
+<h6>GET All Creators by id</h6>
+```bash
+    POSTMAN All Creators by id
+    /api/v1/creators/:id
+    Example: /api/v1/creators/1
+```
+<h6>GET Schools linked to Creator</h6>
+```bash
+    POSTMAN All Creators by id Get Schools
+    /api/v1/creators/:id/schools
+    Example: /api/v1/creators/1/schools
+    
+```
+<h6>GET Search School by name</h6>
+```bash
+    POSTMAN Search School By Name
+    /api/v1/schools?search_name=:string
+    Example: /api/v1/schools?search_name=Lars%20kagg
+```
+<h6>GET Search Schools by location</h6>
+```bash
+    POSTMAN Search Schools By Location
+    /api/v1/schools?search_location=:string
+    Example: /api/v1/schools?search_location=Långviksvägen 23, kalmar
+    Note: 5km radius
+```
+
 
 ```bash
     To create a School in the (Add School) Postman-file
