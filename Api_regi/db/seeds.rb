@@ -36,7 +36,12 @@ User.create(name: "Admin User", email:"admin@admin.com", password: "adminpasswor
                          password_confirmation: "user1password")
 @creator2 = Creator.create(email: "User2@example.com",password: "user2password",
                          password_confirmation: "user2password")
-
+@creator3 = Creator.create(email: "User3@example.com",password: "user3password",
+                         password_confirmation: "user3password")
+@creator4 = Creator.create(email: "User4@example.com",password: "user4password",
+                         password_confirmation: "user4password")
+@creator5 = Creator.create(email: "admin@admin.com",password: "adminpassword",
+                         password_confirmation: "adminpassword")
 @school.creator = @creator1
 @school2.creator = @creator2
 @school3.creator = @creator1

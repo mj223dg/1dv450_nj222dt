@@ -16,7 +16,6 @@ Rails.application.routes.draw do
       resources :creators, only: [:show, :create, :update, :destroy, :index] do
         resources :schools, only: [:index]
       end
-      
     end
   end
   root  'home#index'

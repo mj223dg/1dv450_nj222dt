@@ -10,7 +10,7 @@ class Api::V1::TagsController < Api::V1::BaseController
         render json: { error: "There is no school that is connected to that id"}, status: :not_found and return
       end
     else
-      respond_with Tag.all
+      respond_with Tag.all, status: :ok
     end
   end
 
@@ -18,7 +18,7 @@ class Api::V1::TagsController < Api::V1::BaseController
     if params[:id]
       tag = Tag.find_by_id(params[:id])
       if tag.present?
-        respond_with tag
+        respond_with tag, status: :ok
       else
         render json: { error: "There is no tag that is connected to that id"}, status: :not_found and return
       end

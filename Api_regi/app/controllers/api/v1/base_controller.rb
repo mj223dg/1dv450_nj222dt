@@ -18,10 +18,10 @@ class Api::V1::BaseController < ApplicationController
     
     def offset_params
       if params[:offset].present?
-        @offset = params[:offset].to_i
+        @offset = params[:offset]
       end
       if params[:limit].present?
-        @limit = params[:limit].to_i
+        @limit = params[:limit]
       end
       @offset ||= OFFSET
       @limit  ||= LIMIT

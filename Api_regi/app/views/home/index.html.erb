@@ -1,7 +1,7 @@
 <div class="center jumbotron">
   <% if logged_in? %>
   <h3>You are already logged in</h3>
-  <%= link_to "View your applications", user_path(current_user), class: "btn btn-lg btn-primary" %>
+  <%= link_to "View your applications", user_path(current_new_user), class: "btn btn-lg btn-primary" %>
   <% else %>
   <h1>Welcome</h1>
   <%= link_to "Login", login_path, class: "btn btn-lg btn-primary" %>

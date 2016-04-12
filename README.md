@@ -16,7 +16,6 @@ Note: cd Api_regi
 3: rake db:setup 
 4: rails s
 ``` 
-
 <h4>Test-värden</h4>
 <em>finns i seeds filen annars</em><br>
 <strong>User1</strong>
@@ -29,3 +28,9 @@ Note: cd Api_regi
 <strong>admin</strong>
 <p>email: admin@admin.com</p>
 <p>password adminpassword</p>
+-----------------------------------------------------
+
+<h1>Api</h1>
+
+POSTMAN-FILES
+https://www.getpostman.com/collections/c8b14231ed9673d126f7

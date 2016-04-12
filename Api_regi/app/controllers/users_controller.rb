@@ -22,6 +22,8 @@ class UsersController < ApplicationController
     
     def create
         @user = User.new(user_params)
+        @creator = Creator.create(user_params.except(:name))
+        @creator.save
         if @user.save
             log_in @user
             flash[:success] = "Welcome to the App viewer"
