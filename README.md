@@ -32,5 +32,40 @@ Note: cd Api_regi
 
 <h1>Api</h1>
 
-POSTMAN-FILES
-https://www.getpostman.com/collections/c8b14231ed9673d126f7
+<h3>POSTMAN-FILES</h3>
+[Get the postman files](https://www.getpostman.com/collections/c8b14231ed9673d126f7)
+<strong>How to use</strong>
+```bash
+1: Do the steps above and log in to Api-client
+2: Make a note of a Api-Key that you want to use
+3: Use the Knock JWT Token Key - Postman file 
+   {"auth": {"email": "example@example.com", "password": "examplepassword"}} Change this
+   To the email and password you use to log in to the Api-Client
+   Now you will get a JWT token, you need to make a note of that.
+4: Pick any of the postman-files you want to use and change the headers
+    Authorization : Needs the JWT Token Note: Bearer needs to be before the token (1 whitespace)
+    Api-key : Needs the Api-key you retrived from the Api-Key in step 2
+```
+<strong>Notes about Postman Files</strong>
+<p>If you are gone use the get files to POST make sure you follow the correct JSON</p>
+```bash
+    To create a School in the Add School Postman-file
+    {
+        "schools":{
+            "name":"Example Name",
+            "description":"Example Description",
+            "tags":[
+            {
+                "name":"Example Name"
+            },
+            {
+                "name":"Example Name"
+            }
+            ],
+            "position":{
+                "address":"Långviksvägen 20, Kalmar"
+            }
+        }
+    }
+    Note: Position adress is very case sensitive
+``` 

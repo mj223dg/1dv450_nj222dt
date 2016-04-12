@@ -6,29 +6,31 @@ class Api::V1::SchoolsController < Api::V1::BaseController
 
   def index
     if params[:tag_id]
+      #Search by tag
       tag = Tag.find_by_id(params[:tag_id])
       schools = tag.schools.limit(@limit).offset(@offset) if tag.present?
       elsif params[:creator_id]
-      creator = Creator.find_by_id(params[:creator_id])
-      schools = creator.schools.limit(@limit).offset(@offset) if creator.present?
+        # Search for creator
+        creator = Creator.find_by_id(params[:creator_id])
+        schools = creator.schools.limit(@limit).offset(@offset) if creator.present?
       elsif params[:search_name]
-      # used to search for specific school
-      # Case sensative
-      schoolsearch = School.find_by name: params[:search_name]
-        if schoolsearch.present?
-          schools = schoolsearch
-        else
-          render json: { error: "The school you searched for don't exist"}, status: :not_found and return
-        end
+        # used to search for specific school
+        # Case sensative
+        schoolsearch = School.find_by name: params[:search_name]
+          if schoolsearch.present?
+            schools = schoolsearch
+          else
+            render json: { error: "The school you searched for don't exist"}, status: :not_found and return
+          end
       elsif params[:search_location]
-      # used to search by location adress
-      # Sensative
+        # used to search by location adress
+        # Sensative
         schoollocations = school_near(params[:search_location])
-        if schoollocations == []
-          render json: { error: "No schools near that adress"}, status: :not_found and return
-        else
-          schools = schoollocations
-        end
+          if schoollocations == []
+            render json: { error: "No schools near that adress"}, status: :not_found and return
+          else
+            schools = schoollocations
+          end
     else
       schools = School.all
     end
@@ -53,7 +55,7 @@ class Api::V1::SchoolsController < Api::V1::BaseController
       render json: { error: "The school needs an adress"}, status: 409 and return
     end
     if Position.find_by_address(school_params[:position][:address])
-      render json: { error: "Exist"}, status: 409 and return 
+      render json: { error: "There is already a school on that location"}, status: 409 and return 
     end
     begin
       school = School.new(school_params.except(:tags,:position))
@@ -75,10 +77,38 @@ class Api::V1::SchoolsController < Api::V1::BaseController
   end
   
   def destroy
+    school = School.find_by_id(params[:id])
+    if school.present?
+      if current_user == school.creator
+      else
+        render json: { errors: "You are not the creator of the school" }, status: 409 and return
+      end
+    else
+      render json: { errors: "The school you're trying to remove don't exist" }, status: :non_found and return
+    end
+    school.destroy
+    render json: { action: "destroy", message: "The school was removed" }, status: 200 and return
   end
   
   def update
+    school = School.find_by_id(params[:id])
+    if school.present?
+      if current_user == school.creator
+      else
+        render json: { errors: "You are not the creator of the school" }, status: 409 and return
+      end
+    else
+      render json: { errors: "The school you're trying to update don't exist" }, status: :non_found and return
+    end
+    begin
+      if school.update(school_params)
+        render json: { action: "update", school: SchoolSerializer.new(school) }, status: 200 and return
+      else
+        render json: { errors: "TOTAL HAVOC" }, status: 500 and return
+      end
+    end    
   end
+  
   private
   def school_params
     json_params = ActionController::Parameters.new( JSON.parse(request.body.read) )
