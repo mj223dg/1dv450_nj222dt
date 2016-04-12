@@ -38,15 +38,22 @@ Note: cd Api_regi
 <strong>How to use</strong>
 ```bash
 1: Do the steps above and log in to Api-client
+
 2: Make a note of a Api-Key that you want to use
+
 3: Use the Knock JWT Token Key - Postman file 
    {"auth": {"email": "example@example.com", "password": "examplepassword"}} Change this
    To the email and password you use to log in to the Api-Client
    Now you will get a JWT token, you need to make a note of that.
+   
 4: Pick any of the postman-files you want to use and change the headers
     Authorization : Needs the JWT Token Note: Bearer needs to be before the token (1 whitespace)
-    Api-key : Needs the Api-key you retrived from the Api-Key in step 2
+    Api-key : Needs the Api-key you retrived from the Api-Key in step 2:
+    
 ```
+<h1>It's IMPORTANT that you keep the current Token that you got from JWT in Authorization Header and
+the Api-key you get from the client-side in Api-key Header</h1>
+<br>
 <strong>Notes about Postman Files</strong>
 <p>If you are gone use the get files to POST make sure you follow the correct JSON</p>
 
@@ -73,10 +80,37 @@ Note: cd Api_regi
 ```
 
 ```bash
-    To create a Tag to a school in the (Add Tags by School id) Postman Files
+    To update a school in the (Update School) Postman-file
+    {
+        "schools":{
+            "name":"Example Name",
+            "description":"Example Description",
+        }
+    }
+    note: You could use the same JSON as above but tags and position will be ignored
+``` 
+
+```bash
+    To create a Tag to a school in the (Add Tags by School id) Postman-file
     {
         "tag":{
             "name":"Example Name"
         }
     }
 ``` 
+-----------------------------------------------------------------
+
+<h1>Custom Search<h2>
+
+<h3>Search for school by name</h3>
+```bash
+    Note: if whitespace use %20, all information is also in (Search School By Name) Postman Files
+    /api/v1/schools?search_name=Lars%20kagg (example)
+    
+    Very Case Sensative
+```
+<h3>Search for School around location</h3>
+```bash
+    Note: all information is also in (Search Schools By location) Postman Files 5km radius
+    /api/v1/schools?search_location=Långviksvägen 23, Kalmar
+```

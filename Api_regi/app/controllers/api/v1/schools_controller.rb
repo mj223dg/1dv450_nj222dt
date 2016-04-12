@@ -40,7 +40,7 @@ class Api::V1::SchoolsController < Api::V1::BaseController
     if params[:id]
       school = School.find_by_id(params[:id])
       if school.present?
-        respond_with tag, status: :ok
+        respond_with school, status: :ok
       else
         render json: { error: "There is no school that is connected to that id"}, status: :not_found and return
       end
