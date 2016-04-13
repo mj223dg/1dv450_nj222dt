@@ -69,7 +69,7 @@ the Api-key you get from the client-side in Api-key Header</h3>
     /api/v1/schools
     Header: Content-Type  : application/json
             Api-Key       : Api-Key
-            Authorization : Bearer JWET Token Key
+            Authorization : Bearer JWT Token Key
     Body: 
     {
         "schools":{
@@ -89,8 +89,42 @@ the Api-key you get from the client-side in Api-key Header</h3>
         }
     }
 ```
-
-
+<h6>POST Add Tags to school</h6>
+```bash
+    POSTMAN Add Tags by School id
+    /api/v1/schools/:id/tags
+    Header: Content-Type  : application/json
+            Api-Key       : Api-Key
+            Authorization : Bearer JWT Token Key
+    Body: 
+    {
+        "tag":{
+            "name":"Test Tag"
+        }
+    }
+```
+<h6>PUT Update School</h6>
+```bash
+    POSTMAN Update School
+    /api/v1/schools/:id
+    Header: Content-Type  : application/json
+            Api-Key       : Api-Key
+            Authorization : Bearer JWT Token Key
+    Body:
+    {
+        "schools":{
+            "name":"Name Example",
+            "description":"Test Description"
+        }
+    }
+```
+<h6>DEL Destroy School</h6>
+```bash
+    POSTMAN Destroy School
+    /api/v1/schools/:id
+    Header: Api-Key       : Api-Key
+            Authorization : Bearer JWT Token Key
+```
 
 <h6>GET All Schools</h6>
 ```bash
