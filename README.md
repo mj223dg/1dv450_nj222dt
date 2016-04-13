@@ -194,6 +194,7 @@ the Api-key you get from the client-side in Api-key Header</h3>
     POSTMAN Search School By Name
     /api/v1/schools?search_name=:string
     Example: /api/v1/schools?search_name=Lars%20kagg
+    Note: Very Case Sensitive
 ```
 <h6>GET Search Schools by location</h6>
 ```bash
@@ -201,63 +202,4 @@ the Api-key you get from the client-side in Api-key Header</h3>
     /api/v1/schools?search_location=:string
     Example: /api/v1/schools?search_location=Långviksvägen 23, kalmar
     Note: 5km radius
-```
-
-
-```bash
-    To create a School in the (Add School) Postman-file
-    {
-        "schools":{
-            "name":"Example Name",
-            "description":"Example Description",
-            "tags":[
-            {
-                "name":"Example Name"
-            },
-            {
-                "name":"Example Name"
-            }
-            ],
-            "position":{
-                "address":"Långviksvägen 20, Kalmar"
-            }
-        }
-    }
-    Note: Position address is very case sensitive
-```
-
-```bash
-    To update a school in the (Update School) Postman-file
-    {
-        "schools":{
-            "name":"Example Name",
-            "description":"Example Description",
-        }
-    }
-    note: You could use the same JSON as above but tags and position will be ignored
-``` 
-
-```bash
-    To create a Tag to a school in the (Add Tags by School id) Postman-file
-    {
-        "tag":{
-            "name":"Example Name"
-        }
-    }
-``` 
------------------------------------------------------------------
-
-<h1>Custom Search<h2>
-
-<h3>Search for school by name</h3>
-```bash
-    Note: if whitespace use %20, all information is also in (Search School By Name) Postman Files
-    /api/v1/schools?search_name=Lars%20kagg (example)
-    
-    Very Case Sensative
-```
-<h3>Search for School around location</h3>
-```bash
-    Note: all information is also in (Search Schools By location) Postman Files 5km radius
-    /api/v1/schools?search_location=Långviksvägen 23, Kalmar
 ```
